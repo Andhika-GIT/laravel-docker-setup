@@ -13,4 +13,10 @@ services:
       dockerfile: php.dockerfile
     volumes:
       - ./src:/var/www/html:delegated
-  
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_DATABASE=laravel-docker
+      - MYSQL_USER=hubla-laravel-docker
+      - MYSQL_PASSWORD=hubla-laravel-docker
+      - MYSQL_ROOT_PASSWORD=hubla-laravel-docker
