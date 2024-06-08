@@ -4,7 +4,7 @@ services:
   server:
     image: 'nginx:stable-alpine'
     ports:
-      -'8000:80'
+      - '8000:80'
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
   php:
@@ -20,3 +20,9 @@ services:
       - MYSQL_USER=hubla-laravel-docker
       - MYSQL_PASSWORD=hubla-laravel-docker
       - MYSQL_ROOT_PASSWORD=hubla-laravel-docker
+  composer:
+    build: 
+      context: ./dockerfiles
+      dockerfile: composer.dockerfile
+    volumes:
+      - ./src:/var/www/html
