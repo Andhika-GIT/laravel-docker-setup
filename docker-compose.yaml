@@ -6,9 +6,10 @@ services:
     ports:
       - '8000:80'
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./src:/var/www/html
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
   php:
-    build: 
+    build:
       context: ./dockerfiles
       dockerfile: php.dockerfile
     volumes:
@@ -21,7 +22,7 @@ services:
       - MYSQL_PASSWORD=hubla-laravel-docker
       - MYSQL_ROOT_PASSWORD=hubla-laravel-docker
   composer:
-    build: 
+    build:
       context: ./dockerfiles
       dockerfile: composer.dockerfile
     volumes:
